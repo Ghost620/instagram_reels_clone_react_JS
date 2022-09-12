@@ -1,4 +1,5 @@
 import './App.css';
+import Videocard from './videocard';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       </div>
 
       <div className='app_videos'>
-
+        <Videocard />
       </div>
 
     </div>
