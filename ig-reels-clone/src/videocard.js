@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import './videoCard.css'
+import VideoHeader from './VideoHeader'
 
 function Videocard() {
 
@@ -20,7 +21,7 @@ function Videocard() {
   return (
     <div className='videoCard'>
         <VideoHeader />
-        <video ref={videoRef} onClick={onVideoPress} className='video_player' src='https://www.youtube.com/watch?v=U4xnsRk4DMc' alt='IG reel video' controls="true" loop/>
+        <video ref={videoRef} onClick={onVideoPress} className='video_player' alt='IG reel video' controls loop/>
     </div>
   )
 }
