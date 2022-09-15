@@ -1,7 +1,7 @@
 .videoFooter {
     position: relative;
     margin-left: 20px;
-    bottom: 1000px;
+    bottom: 100px;
 }
 
 .videoFooter_text {
@@ -29,6 +29,7 @@
     width: 95%;
     color: white;
     justify-content: space-between;
+    margin-top: 15px;
 }
 
 .actions_left > .MuiSvgIcon-root {
@@ -49,12 +50,12 @@
     margin-left: 3px;
 }
 
-/* .videoFooter_ticker > .ticker {
+.videoFooter_ticker > .ticker {
     height: fit-content;
     margin-left: 30 px;
     margin-bottom: 20 px;
     width: 60%;
-} */
+}
 
 .videoFooter_icon {
     position: absolute;
@@ -66,9 +67,6 @@
     padding-top: 7px;
     font-size: 12px;
     color: white;
-
-    height: fit-content;
-    margin-left: 30 px;
+    margin-left: 40px;
     margin-bottom: 20 px;
-    width: 60%;
 }
