@@ -22,7 +22,7 @@ function Videocard({ url, likes, shares, avatarSrc, song, channel }) {
   return (
     <div className='videoCard'>
         <VideoHeader />
-        <video ref={videoRef} onClick={onVideoPress} className='video_player' src={url} alt='IG reel video' controls loop autoPlay/>
+        <video ref={videoRef} onClick={onVideoPress} className='video_player' src={url} alt='IG reel video' loop autoPlay/>
         <VideoFooter channel={channel} likes={likes} shares={shares} avatarSrc={avatarSrc} song={song}/>
     </div>
   )
