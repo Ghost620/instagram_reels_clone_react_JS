@@ -3,7 +3,7 @@ import './VideoFooter.css'
 import Button from '@mui/material/Button'
 import Avatar from '@mui/material/Avatar'
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
-import Ticker from 'react-ticker'
+// import Ticker from 'react-ticker'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import SendIcon from '@mui/icons-material/Send';
@@ -20,13 +20,13 @@ function VideoFooter({ channel, song, likes, shares, avatarSrc }) {
 
         <div className='videoFooter_ticker'>
           <MusicNoteIcon className='videoFooter_icon' />
-          <Ticker>
+          {/* <Ticker>
             {({ index }) => (
               <>
                 <h1>{song}</h1>
               </>
             )}
-          </Ticker>
+          </Ticker> */}
         </div>
 
         <div className='videofooter_actions'>
