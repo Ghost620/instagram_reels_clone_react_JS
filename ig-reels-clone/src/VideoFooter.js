@@ -20,6 +20,7 @@ function VideoFooter({ channel, song, likes, shares, avatarSrc }) {
 
         <div className='videoFooter_ticker'>
           <MusicNoteIcon className='videoFooter_icon' />
+          <h1>{song}</h1>
           {/* <Ticker>
             {({ index }) => (
               <>
@@ -29,7 +30,7 @@ function VideoFooter({ channel, song, likes, shares, avatarSrc }) {
           </Ticker> */}
         </div>
 
-        <div className='videofooter_actions'>
+        <div className='videoFooter_actions'>
 
           <div className='actions_left'>
             <FavoriteIcon fontSize='large' />
@@ -39,7 +40,16 @@ function VideoFooter({ channel, song, likes, shares, avatarSrc }) {
           </div>
 
           <div className='actions_right'>
-              
+
+              <div className='stat'>
+                <FavoriteIcon />
+                <p>{likes}</p>
+              </div>
+
+              <div className='stat'>
+                <ModeCommentIcon />
+                <p>{shares}</p>
+              </div>
           </div>
 
         </div>
