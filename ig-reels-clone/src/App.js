@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import './App.css';
 import Videocard from './videocard';
-import db from "./firebase"
+import db from './firebase'
 
 function App() {
 
@@ -26,11 +26,11 @@ function App() {
 
       <div className='app_videos'>
 
-        {reels.map( ( { channel, avatarSrc, song, url, likes, shares } ) => {
+        {reels.map( ( { channel, avatarSrc, song, url, likes, shares } ) => (
 
           <Videocard channel={channel} avatarSrc={avatarSrc} song={song} url={url} likes={likes} shares={shares} />
 
-        } )}
+        ) )}
 
       </div>
 
