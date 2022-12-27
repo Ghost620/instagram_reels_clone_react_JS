@@ -44,3 +44,17 @@ html {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+.upload {
+    display: flex;
+    margin-top: -150px;
+    align-items: center;
+    justify-content: space-evenly;
+    min-width: 450px;
+}
+
+.upload > button {
+    padding: 5px;
+    width: 150px;
+    border-radius: 50px;
+}
