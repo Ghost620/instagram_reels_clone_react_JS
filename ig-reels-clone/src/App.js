@@ -8,7 +8,6 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 function App() {
 
   const [filePath, setFilePath] = useState(null)
-  const [vidURL, setVidURL] = useState('')
 
   const Push = async () => {
 
@@ -22,24 +21,23 @@ function App() {
     uploadTask.on("state_changed",
       (snapshot) => {},
       (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          setVidURL(url)
+      async () => {
+        await getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+
+          setDoc(doc(db, "reels", `${(Math.pow(Math.random()*9 , 99).toString(36))}`), {
+            avatarSrc: 'https://source.unsplash.com/random/300x300',
+            channel: `${(Math.random() + 1).toString(36).substring(7)}`,
+            likes: `${Math.floor( Math.random()*999 ) + 100}`,
+            shares: `${Math.floor( Math.random()*99 ) + 100}`,
+            song: `${(Math.random()*99999999999999999999999999999 + 10000).toString(36)}`,
+            url: url
+          });
+
+          setFilePath(null);
+
         });
       }
     );
-
-    await setDoc(doc(db, "reels", `${(Math.pow(Math.random()*9 , 99).toString(36))}`), {
-      avatarSrc: 'https://source.unsplash.com/random/300x300',
-      channel: `${(Math.random() + 1).toString(36).substring(7)}`,
-      likes: `${Math.floor( Math.random()*999 ) + 100}`,
-      shares: `${Math.floor( Math.random()*99 ) + 100}`,
-      song: `${(Math.random()*99999999999999999999999999999 + 10000).toString(36)}`,
-      url: vidURL
-    });
-
-    setVidURL('');
-    setFilePath(null);
 
   }
 
