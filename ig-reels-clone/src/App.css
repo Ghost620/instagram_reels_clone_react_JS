@@ -47,14 +47,30 @@ html {
 
 .upload {
     display: flex;
-    margin-top: -150px;
+    flex-direction: column;
+    margin-top: -120px;
     align-items: center;
     justify-content: space-evenly;
     min-width: 450px;
+    color: white;
 }
 
 .upload > button {
     padding: 5px;
     width: 150px;
     border-radius: 50px;
+}
+.innerbar {
+    text-align: center;
+    color: black;
+    background-color: beige;
+}
+
+.outerbar {
+    width: 300px;
+    padding: 10px;
+}
+
+.fileSelect {
+    padding: 10px;
 }

@@ -8,6 +8,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 function App() {
 
   const [filePath, setFilePath] = useState(null)
+  const [progresspercent, setProgresspercent] = useState(0);
 
   const Push = async () => {
 
@@ -19,12 +20,15 @@ function App() {
     const uploadTask = uploadBytesResumable(storageRef, filePath);
 
     uploadTask.on("state_changed",
-      (snapshot) => {},
+      (snapshot) => {
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        setProgresspercent(progress);
+      },
       (err) => console.log(err),
       async () => {
-        await getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+        await getDownloadURL(uploadTask.snapshot.ref).then(async(url) => {
 
-          setDoc(doc(db, "reels", `${(Math.pow(Math.random()*9 , 99).toString(36))}`), {
+          await setDoc(doc(db, "reels", `${(Math.pow(Math.random()*9 , 99).toString(36))}`), {
             avatarSrc: 'https://source.unsplash.com/random/300x300',
             channel: `${(Math.random() + 1).toString(36).substring(7)}`,
             likes: `${Math.floor( Math.random()*999 ) + 100}`,
@@ -34,6 +38,7 @@ function App() {
           });
 
           setFilePath(null);
+          if(progresspercent===100){document.getElementsByClassName('upload')[0].append(<div>Upload completed</div>)}
 
         });
       }
@@ -71,8 +76,13 @@ function App() {
       </div>
 
       <div className="upload">
-        <input type="file" onChange={ (event) => setFilePath(event.target.files[0]) } accept="/image/*" />
-        <button onClick={Push} > Upload </button>
+        <div className="fileSelect">
+          <input type="file" onChange={ (event) => setFilePath(event.target.files[0]) } accept="/image/*" />
+          <button onClick={Push} > Upload </button>
+        </div>
+        <div className='outerbar'>
+          <div className='innerbar' style={{ width: `${progresspercent}%`}}> {progresspercent}% </div>
+        </div>
       </div>
 
     </div>
