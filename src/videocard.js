@@ -5,7 +5,7 @@ import VideoFooter from './VideoFooter'
 
 function Videocard({ url, likes, shares, channel, avatarSrc, song }) {
 
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+  const [ isVideoPlaying, setIsVideoPlaying ] = useState(false)
 
   const videoRef = useRef(null)
 
@@ -22,7 +22,7 @@ function Videocard({ url, likes, shares, channel, avatarSrc, song }) {
   return (
     <div className='videoCard'>
         <VideoHeader />
-        <video ref={videoRef} onClick={onVideoPress} className='video_player' src={url} alt='IG reel video' loop autoPlay/>
+        <video autoPlay muted ref={videoRef} onClick={onVideoPress} className='video_player' src={url} alt='IG reel video' loop />
         <VideoFooter channel={channel} likes={likes} shares={shares} avatarSrc={avatarSrc} song={song} />
     </div>
   )
