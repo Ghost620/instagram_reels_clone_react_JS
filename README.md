@@ -1,1 +1,1 @@
-https://instagram-reels-clone-react.web.app/
+https://instagram-reels-clone-react-js.vercel.app/
