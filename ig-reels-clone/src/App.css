@@ -60,7 +60,10 @@ html {
     width: 150px;
     border-radius: 50px;
 }
+
 .innerbar {
+    height: 15px;
+    margin-bottom: 5px;
     text-align: center;
     color: black;
     background-color: beige;

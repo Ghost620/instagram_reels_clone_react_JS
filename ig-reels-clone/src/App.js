@@ -8,7 +8,14 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 function App() {
 
   const [filePath, setFilePath] = useState(null)
+  const [uploadComp, setUploadComp] = useState(null)
   const [progresspercent, setProgresspercent] = useState(0);
+
+  const handleChange = async (event) => {
+    setFilePath(event.target.files[0])
+    setUploadComp(false)
+    setProgresspercent(0)
+  }
 
   const Push = async () => {
 
@@ -38,7 +45,8 @@ function App() {
           });
 
           setFilePath(null);
-          if(progresspercent===100){document.getElementsByClassName('upload')[0].append(<div>Upload completed</div>)}
+          setUploadComp(true)
+          //if(progresspercent===100){document.getElementsByClassName('upload')[0].append(<div style={{ color: 'white'}}> Upload completed </div>)}
 
         });
       }
@@ -77,11 +85,13 @@ function App() {
 
       <div className="upload">
         <div className="fileSelect">
-          <input type="file" onChange={ (event) => setFilePath(event.target.files[0]) } accept="/image/*" />
+          <input type="file" onChange={handleChange} accept="/image/*" />
           <button onClick={Push} > Upload </button>
         </div>
         <div className='outerbar'>
-          <div className='innerbar' style={{ width: `${progresspercent}%`}}> {progresspercent}% </div>
+          <div className='innerbar' style={{ width: `${progresspercent}%`}}></div>
+          { (filePath && progresspercent!==0) && <div style={{textAlign: "center"}}> Uploading  -  {progresspercent}%</div> }
+          { uploadComp && <div style={{ color: 'white', textAlign: "center"}}> Upload completed </div> }
         </div>
       </div>
 
